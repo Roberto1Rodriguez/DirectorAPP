@@ -12,7 +12,7 @@ namespace DirectorAPP.Services
     {
         HttpClient cliente = new HttpClient
         {
-            BaseAddress = new Uri("")
+            BaseAddress = new Uri("https://directorapi.sistemas19.com/")
         };
         public event Action<List<string>> Error;
 
@@ -26,21 +26,23 @@ namespace DirectorAPP.Services
                 LanzarErrorJson(errores);
                 return false;
             }
-            else if (response.StatusCode==System.Net.HttpStatusCode.NotFound)
+            if (response.StatusCode==System.Net.HttpStatusCode.NotFound)
             {
                 LanzarError("No se encontro el vuelo");
+                return false;
             }
             return true;
         }
-
-
 
         void LanzarError(string mensaje)
         {
             Error?.Invoke(new List<string> { mensaje });
         }
+
+
         void LanzarErrorJson(string json)
         {
+
             List<string> obj = JsonConvert.DeserializeObject<List<string>>(json);
             if (obj != null)
             {

@@ -1,4 +1,6 @@
-﻿namespace DirectorAPP;
+﻿using DirectorAPP.Views;
+
+namespace DirectorAPP;
 
 public partial class App : Application
 {
@@ -6,6 +8,6 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new Views.LoginView();
-	}
+        MainPage = new NavigationPage(new LoginView());
+    }
 }

@@ -15,30 +15,31 @@ namespace DirectorAPP.ViewModel
     public class DirectorViewModel : INotifyPropertyChanged
 
     {
-        public Usuario usuario
-        {
-            get { return usuario; }
-            set { usuario = value; Actualizar(nameof(Usuario)); }
-        }
+        public Usuario Usuario { get; set; }
+
         public string Errores { get; set; }
         readonly Service service = new Service();
-      public ICommand LoginCommand { get; set; }
+        public ICommand LoginCommand { get; set; }
         public DirectorViewModel()
         {
-           LoginCommand=new Command(Login);
+            LoginCommand = new Command(Login);
+            Usuario = new Usuario();
             service.Error += Service_Error;
         }
-       private async void Login()
+        private async void Login()
         {
             Errores = "";
-            if (usuario!=null)
+            if (Usuario != null)
             {
-                if (await service.Login(usuario))
+                if (await service.Login(Usuario))
                 {
                     AggUsuarioView aggusu = new AggUsuarioView() { BindingContext = this };
                     await Application.Current.MainPage.Navigation.PushAsync(aggusu);
                 }
+               
+
             }
+            Actualizar(nameof(Errores));
         }
         private void Service_Error(List<string> obj)
         {
@@ -49,9 +50,9 @@ namespace DirectorAPP.ViewModel
 
         public void Actualizar(string name = null)
         {
-            PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(name));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-    
+
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
