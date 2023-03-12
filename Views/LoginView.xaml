@@ -2,9 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DirectorAPP.Views.LoginView"
+            xmlns:vm="clr-namespace:DirectorAPP.ViewModel"
              Title="LoginView" BackgroundColor="#eaebed">
+    <ContentPage.BindingContext>
+        <vm:DirectorViewModel></vm:DirectorViewModel>
+    </ContentPage.BindingContext>
+    
     <VerticalStackLayout>
-
+      
         <StackLayout Margin="0,20,0,0">
             <Image Margin="0,0,0,-100" Source="logo.png"></Image>
             <Label TextColor="#6263f0" FontAttributes="Bold" FontFamily="Arial" HorizontalTextAlignment="Center" FontSize="Medium">SISTEMA DE GESTION DE DOCENTES</Label>
@@ -12,25 +17,27 @@
             <Frame HasShadow="True" HorizontalOptions="StartAndExpand" Margin="10,50,0,0"  Padding="8" CornerRadius="30" HeightRequest="60" WidthRequest="360">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
                         <ColumnDefinition Width="30"/>
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                <Entry TextColor="Black" FontAttributes="Bold"  Placeholder="Usuario"></Entry>
-                    <Image Grid.Column="1" Source="usuario.png"></Image>
+                  
+                    <Image  Source="usuario.png"></Image>
+                    <Entry Text="{Binding usuario.Usuario1}" Grid.Column="1" TextColor="Black" FontAttributes="Bold"  Placeholder="Usuario"></Entry>
                 </Grid>
             </Frame>
             <Frame HasShadow="True" HorizontalOptions="StartAndExpand" Margin="10,30,0,0" Padding="10" CornerRadius="30" HeightRequest="60" WidthRequest="360">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
                         <ColumnDefinition Width="30"/>
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Entry  TextColor="Black" FontAttributes="Bold"   Placeholder="Contraseña" IsPassword="True"></Entry>
-                    <Image Grid.Column="1" Source="contra.png"></Image>
+                   
+                    <Image  Source="contra.png"></Image>
+                    <Entry Text="{Binding usuario.Contraseña}" Grid.Column="1" TextColor="Black" FontAttributes="Bold"   Placeholder="Contraseña" IsPassword="True"></Entry>
                 </Grid>
             </Frame>
 
-            <Button BackgroundColor="#8074ff" WidthRequest="350" CornerRadius="20" FontAttributes="Bold" CharacterSpacing="3" HeightRequest="60" TextColor="White" Margin="0,20,0,0" Text="INGRESAR"></Button>
+            <Button Command="{Binding LoginCommand }"  BackgroundColor="#8074ff" WidthRequest="350" CornerRadius="20" FontAttributes="Bold" CharacterSpacing="3" HeightRequest="60" TextColor="White" Margin="0,20,0,0" Text="INGRESAR"></Button>
            
         </StackLayout>
        

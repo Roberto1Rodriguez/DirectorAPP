@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DirectorAPP.Views.AggDocenteView"
+             Title="AggDocenteView" Background="#eaebed">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.ColumnSpan="2" Aspect="AspectFill" Scale=".8" Source="aggdocente.png"></Image>
+            <Label Grid.Column="0" Margin="10,0,0,0" CharacterSpacing="2"  HorizontalTextAlignment="Center" TextColor="Black" VerticalTextAlignment="End" >Usuario</Label>
+            <Label Grid.Column="1" Margin="0,0,10,0"  CharacterSpacing="2" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="Black" VerticalTextAlignment="End" >Docente</Label>
+        </Grid>
+        <Frame  Grid.Row="1" Margin="5,0,5,0" HeightRequest="600" HasShadow="True" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Margin="0,10,0,0" FontFamily="Arial" FontAttributes="Bold" FontSize="Medium" Grid.ColumnSpan="2" TextColor="#8949a5">DATOS DEL DOCENTE</Label>
+                <Frame  Grid.Row="1"  Margin="0,0,5,70" CornerRadius="10" HeightRequest="50">
+                    <Entry  TextColor="Black" HeightRequest="50" Placeholder="Nombre*" ></Entry>
+                </Frame>
+                <Frame  Grid.Row="1" Grid.Column="1"  Margin="5,0,0,70" CornerRadius="10" HeightRequest="50">
+                    <Entry  TextColor="Black" HeightRequest="50" Placeholder="Apellido Paterno*" ></Entry>
+                </Frame>
+                <Frame  Grid.Row="2" Margin="0,20,5,70" CornerRadius="10" HeightRequest="50">
+                    <Entry  TextColor="Black" HeightRequest="50" Placeholder="Apellido Materno*" ></Entry>
+                </Frame>
+                <Frame  Grid.Row="2" Grid.Column="1"  Margin="5,20,0,70" CornerRadius="10" HeightRequest="50">
+                    <Entry  TextColor="Black" HeightRequest="50" Placeholder="Edad*" ></Entry>
+                </Frame>
+                <Frame  Grid.Row="3" Grid.ColumnSpan="2"  Margin="5,20,0,70" CornerRadius="10" HeightRequest="50">
+                    <Picker TextColor="Black" HeightRequest="50" Title="Seleccione Tipo de Docente" >
+                        <Picker.Items>
+                            <x:String>1.Docente Ordinario</x:String>
+                            <x:String>2.Docente Especial</x:String>
+                        </Picker.Items>
+                        
+                    </Picker>
+                </Frame>
+                <Label Grid.Row="4" Margin="0,0,0,0" FontFamily="Arial" FontAttributes="Bold" FontSize="Medium" Grid.ColumnSpan="2" TextColor="#8949a5">INFORMACIÓN DE CONTACTO</Label>
+                <Frame  Grid.Row="5" Margin="0,0,5,70" Grid.ColumnSpan="2" CornerRadius="10" HeightRequest="50">
+                    <Entry  TextColor="Black" HeightRequest="50" Placeholder="E-mail*" ></Entry>
+                </Frame>
+                <Frame  Grid.Row="6"  Margin="0,0,5,70" CornerRadius="10" HeightRequest="50">
+                    <Entry  TextColor="Black" HeightRequest="50" Placeholder="Telefono*" ></Entry>
+                </Frame>
+                <Button Grid.Row="7" Grid.ColumnSpan="2" BackgroundColor="#9019c7" WidthRequest="300" CornerRadius="30" FontAttributes="Bold" CharacterSpacing="3" HeightRequest="60" TextColor="White" Margin="0,0,0,0" Text="AGREGAR USUARIO"></Button>
+
+            </Grid>
+        </Frame>
+       
+    </Grid>
+</ContentPage>
