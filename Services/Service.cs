@@ -28,7 +28,8 @@ namespace DirectorAPP.Services
             }
             if (response.StatusCode==System.Net.HttpStatusCode.NotFound)
             {
-                LanzarError("No se encontro el vuelo");
+                var errores = await response.Content.ReadAsStringAsync();
+                LanzarError(errores);
                 return false;
             }
             return true;
