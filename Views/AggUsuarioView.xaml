@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DirectorAPP.Views.AggUsuarioView"
             xmlns:vm="clr-namespace:DirectorAPP.ViewModel"
-             Title="AggUsuarioView" Background="#eaebed" >
+             Title="AggUsuarioView" Background="#eaebed" NavigationPage.HasNavigationBar="False" >
     <ContentPage.BindingContext>
         <vm:DirectorViewModel></vm:DirectorViewModel>
     </ContentPage.BindingContext>

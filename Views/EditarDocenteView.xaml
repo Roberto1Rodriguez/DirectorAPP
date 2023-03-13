@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DirectorAPP.Views.AggDocenteView"
+             x:Class="DirectorAPP.Views.EditarDocenteView"
              xmlns:vm="clr-namespace:DirectorAPP.ViewModel"
-             Title="AggDocenteView" Background="#eaebed" NavigationPage.HasNavigationBar="False">
+              Background="#eaebed" NavigationPage.HasNavigationBar="False"
+             Title="EditarDocenteView">
     <ContentPage.BindingContext>
         <vm:DirectorViewModel></vm:DirectorViewModel>
     </ContentPage.BindingContext>
@@ -48,34 +49,20 @@
                     <Entry  TextColor="Black" HeightRequest="50" Placeholder="Apellido Materno*" Text="{Binding Docente.ApellidoMaterno}" ></Entry>
                 </Frame>
                 <Frame  Grid.Row="2" Grid.Column="1"  Margin="5,20,0,70" CornerRadius="10" HeightRequest="50">
-                    <Entry  TextColor="Black" HeightRequest="50" Placeholder="Edad*" Text="{Binding Docente.Edad}" ></Entry>
+                    <Entry Keyboard="Numeric"  TextColor="Black" HeightRequest="50" Placeholder="Edad*" Text="{Binding Docente.Edad}" ></Entry>
                 </Frame>
-                <Frame  Grid.Row="3"  Margin="5,20,0,70" CornerRadius="10" HeightRequest="50">
-                    <Picker TextColor="Black" HeightRequest="50" Title="Seleccione Tipo de Docente" SelectedIndex="{Binding IdTipo}" >
-                        <Picker.Items>
-                            <x:String>1.Docente Ordinario</x:String>
-                            <x:String>2.Docente Especial</x:String>
-                        </Picker.Items>
-                        
-                    </Picker>
-                </Frame>
-                <Frame  Grid.Row="3" Grid.Column="2"  Margin="5,20,0,70" CornerRadius="10" HeightRequest="50">
-                    <Picker ItemsSource="{Binding Usuarios}" ItemDisplayBinding="{Binding Usuario1}" SelectedItem="{Binding Usuario}" TextColor="Black" HeightRequest="50" Title="Seleccione el usuario" >
-                        
-
-                    </Picker>
-                </Frame>
+              
                 <Label Grid.Row="4" Margin="0,0,0,0" FontFamily="Arial" FontAttributes="Bold" FontSize="Medium" Grid.ColumnSpan="2" TextColor="#8949a5">INFORMACIÓN DE CONTACTO</Label>
                 <Frame  Grid.Row="5" Margin="0,0,5,70" Grid.ColumnSpan="2" CornerRadius="10" HeightRequest="50">
                     <Entry TextColor="Black" HeightRequest="50" Placeholder="E-mail*" Text="{Binding Docente.Correo}" ></Entry>
                 </Frame>
                 <Frame  Grid.Row="6"  Margin="0,0,5,70" CornerRadius="10" HeightRequest="50">
-                    <Entry  TextColor="Black" HeightRequest="50" Placeholder="Telefono*" Text="{Binding Docente.Telefono}" ></Entry>
+                    <Entry  Keyboard="Numeric" TextColor="Black" HeightRequest="50" Placeholder="Telefono*" Text="{Binding Docente.Telefono}" ></Entry>
                 </Frame>
                 <Button Command="{Binding GuardarDocenteCommand }" Grid.Row="7" Grid.ColumnSpan="2" BackgroundColor="#9019c7" WidthRequest="300" CornerRadius="30" FontAttributes="Bold" CharacterSpacing="3" HeightRequest="60" TextColor="White" Margin="0,0,0,0" Text="AGREGAR USUARIO"></Button>
 
             </Grid>
         </Frame>
-       
+
     </Grid>
 </ContentPage>

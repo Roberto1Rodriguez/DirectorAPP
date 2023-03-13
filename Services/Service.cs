@@ -115,7 +115,7 @@ namespace DirectorAPP.Services
         public async Task<bool> UpdateDocente(Docentes d)
         {
             var json = JsonConvert.SerializeObject(d);
-            var response = await cliente.PutAsync("api/usuario", new StringContent(json, Encoding.UTF8,
+            var response = await cliente.PutAsync("api/docente", new StringContent(json, Encoding.UTF8,
                 "application/json"));
             if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
             {
@@ -125,7 +125,7 @@ namespace DirectorAPP.Services
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                LanzarError("No se encontro el usuario");
+                LanzarError("No se encontro el docente");
             }
             return true;
         }

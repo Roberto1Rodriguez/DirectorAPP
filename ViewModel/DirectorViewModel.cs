@@ -18,6 +18,7 @@ namespace DirectorAPP.ViewModel
     {
         public Usuario Usuario { get; set; }
         public Docentes Docente { get; set; } = null;
+        public int IdTipo { get; set; }
         public ObservableCollection<Docentes> Docentes { get; set; } = new ObservableCollection<Docentes>();
         public ObservableCollection<Usuario> Usuarios { get; set; } = new ObservableCollection<Usuario>();
         public string Errores { get; set; }
@@ -26,6 +27,7 @@ namespace DirectorAPP.ViewModel
         public ICommand VerAgregarUsuario { get; set; }
         public ICommand VerAgregarDocente { get; set; }
         public ICommand VerEditarUsuarioCommand { get; set; }
+        public ICommand VerEditarDocenteCommand { get; set; }
         public ICommand GuardarUsuarioCommand { get; set; }
         public ICommand GuardarDocenteCommand { get; set; }
 
@@ -38,6 +40,8 @@ namespace DirectorAPP.ViewModel
             GuardarUsuarioCommand = new Command(GuardarUsuario);
             GuardarDocenteCommand = new Command(GuardarDocente);
             VerEditarUsuarioCommand = new Command<Usuario>(EditarUsuario);
+            VerEditarDocenteCommand = new Command<Docentes>(EditarDocente);
+
             Usuario = new Usuario();
             Docente = new Docentes();
             service.Error += Service_Error;
@@ -100,6 +104,26 @@ namespace DirectorAPP.ViewModel
             EditarUsuarioView editarusuario = new EditarUsuarioView() { BindingContext = this };
             Application.Current.MainPage.Navigation.PushAsync(editarusuario);
         }
+        void EditarDocente(Docentes d)
+        {
+            Errores = "";
+            Actualizar(nameof(Errores));
+            Docente = new Docentes
+            {
+                 Id=d.Id,
+               Nombre=d.Nombre,
+                ApellidoPaterno=d.ApellidoPaterno,
+                 ApellidoMaterno=d.ApellidoMaterno,
+                  Telefono= d.Telefono,
+                   Edad= d.Edad,
+                    Correo = d.Correo,
+                     TipoDocente=d.TipoDocente,
+                     
+                    
+            };
+            EditarDocenteView editardocente = new EditarDocenteView() { BindingContext = this };
+            Application.Current.MainPage.Navigation.PushAsync(editardocente);
+        }
         async void GuardarDocente()
         {
             Errores = "";
@@ -107,6 +131,8 @@ namespace DirectorAPP.ViewModel
             {
                 if (Docente.Id == 0)
                 {
+                    Docente.IdUsuario = Usuario.Id;
+                    Docente.TipoDocente= IdTipo + 1 ;
                     if (await service.InsertDocente(Docente))
                     {
                         await Application.Current.MainPage.Navigation.PopAsync();
@@ -114,6 +140,7 @@ namespace DirectorAPP.ViewModel
                 }
                 else
                 {
+                    
                     if (await service.UpdateDocente(Docente))
                     {
                         await Application.Current.MainPage.Navigation.PopAsync();
@@ -121,7 +148,7 @@ namespace DirectorAPP.ViewModel
                     }
                 }
             }
-            VerUsuarios();
+            VerDocentes();
 
         }
         async void VerUsuarios()
