@@ -34,7 +34,54 @@ namespace DirectorAPP.Services
             }
             return true;
         }
-
+        public async Task<List<Docentes>> GetDocentes()
+        {
+            List<Docentes> docentes = null;
+            var response = await cliente.GetAsync("api/docente");
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                docentes=JsonConvert.DeserializeObject<List<Docentes>>(json);
+            }
+            if (docentes!=null)
+            {
+                return docentes;
+            }
+            else
+            {
+                return new List<Docentes>();
+            }
+        }
+        public async Task<List<Usuario>> GetUsuarios()
+        {
+            List<Usuario> docentes = null;
+            var response = await cliente.GetAsync("api/usuario");
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                docentes = JsonConvert.DeserializeObject<List<Usuario>>(json);
+            }
+            if (docentes != null)
+            {
+                return docentes;
+            }
+            else
+            {
+                return new List<Usuario>();
+            }
+        }
+        public async Task<bool> InsertUsuario(Usuario u)
+        {
+            var json = JsonConvert.SerializeObject(u);
+            var response = await cliente.PostAsync("api/usuario", new StringContent(json, Encoding.UTF8, "application/json"));
+            if (response.StatusCode==System.Net.HttpStatusCode.BadRequest)
+            {
+                var errores = await response.Content.ReadAsStringAsync();
+                LanzarErrorJson(errores);
+                return false;
+            }
+            return true;
+        }
         void LanzarError(string mensaje)
         {
             Error?.Invoke(new List<string> { mensaje });

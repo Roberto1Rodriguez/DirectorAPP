@@ -51,10 +51,13 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\AggDocente.png" />
 	  <None Remove="Resources\Images\AggUsuario.png" />
+	  <None Remove="Resources\Images\agregar.png" />
 	  <None Remove="Resources\Images\contra.png" />
 	  <None Remove="Resources\Images\logo.png" />
 	  <None Remove="Resources\Images\ojo.png" />
+	  <None Remove="Resources\Images\profesor.png" />
 	  <None Remove="Resources\Images\usuario.png" />
+	  <None Remove="Resources\Images\usuarios.png" />
 	  <None Remove="Resources\Images\visible.png" />
 	</ItemGroup>
 
@@ -70,7 +73,19 @@
 	  <MauiXaml Update="Views\AggUsuarioView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\DocentesView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\GruposView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\LoginView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PrincipalView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\UsuariosView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

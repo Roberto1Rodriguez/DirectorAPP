@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DirectorAPP.Views.UsuariosView" xmlns:vm="clr-namespace:DirectorAPP.ViewModel"
+             Title="Usuarios" Background="#eaebed">
+    <ContentPage.BindingContext>
+        <vm:DirectorViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="LightSkyBlue" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+   
+                <CollectionView   ItemsSource="{Binding Usuarios}" SelectionMode="Single" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                            <Grid>
+                    <Frame HasShadow="True" BackgroundColor="White" HeightRequest="110" HorizontalOptions="Start" CornerRadius="15" WidthRequest="360" Margin="20,15,0,0">
+                        <Grid VerticalOptions="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                             
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".3*"/>
+                                    <ColumnDefinition Width=".6*"/>
+                                </Grid.ColumnDefinitions>
+                            <Image Source="usuarios.png"></Image>
+                            <Label  TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="Medium" Grid.Column="1" Margin="0,0,0,5" Text="{Binding Usuario1}"></Label>
+                        </Grid>
+                    </Frame>
+                            </Grid>
+                        </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+     
+      
+      
+   
+        <ImageButton Command="{Binding VerAgregar}" Grid.Row="0" CornerRadius="35" HorizontalOptions="End" Aspect="Fill"  WidthRequest="70" HeightRequest="70" Margin="0,0,20,22" x:Name="btnagg"  VerticalOptions="End" Source="agregar.png">
+           
+        </ImageButton>
+        
+    </Grid>
+</ContentPage>

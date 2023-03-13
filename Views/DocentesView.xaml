@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DirectorAPP.Views.DocentesView" xmlns:vm="clr-namespace:DirectorAPP.ViewModel"
+             Title="Docentes" Background="#eaebed" NavigationPage.HasBackButton="False">
+    <ContentPage.BindingContext>
+        <vm:DirectorViewModel/>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout>
+       
+        <CollectionView ItemsSource="{Binding Docentes}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                    <Frame BackgroundColor="White" HeightRequest="120" CornerRadius="15" WidthRequest="360" Margin="0,15,0,0">
+                        <Grid VerticalOptions="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".3*"/>
+                                <ColumnDefinition Width=".6*"/>
+                                <ColumnDefinition Width=".6*"/>
+                                <ColumnDefinition Width=".5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="profesor.png" Grid.RowSpan="2"></Image>
+                            <Label  TextColor="Black" FontAttributes="Bold" Grid.Column="1" Margin="0,0,0,5" Text="{Binding Nombre}"></Label>
+                            <Label  TextColor="Black" FontAttributes="Bold" Grid.Column="2" Text="{Binding ApellidoPaterno}"></Label>
+                            <Label TextColor="Black" FontAttributes="Bold" Grid.Column="3" Text="{Binding ApellidoMaterno}"></Label>
+                            <Label HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" Grid.Row="2" Grid.Column="1" Text="Tipo de Docente:" ></Label>
+                            <Label HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="Center" Grid.ColumnSpan="2" Text="{Binding TipoDocente}"></Label>
+                            <Label HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" Grid.Row="2" Grid.Column="3">Grupo:</Label>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+      
+    </VerticalStackLayout>
+</ContentPage>
