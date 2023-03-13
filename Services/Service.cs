@@ -82,9 +82,52 @@ namespace DirectorAPP.Services
             }
             return true;
         }
+        public async Task<bool> UpdateUsuario(Usuario u)
+        {
+            var json = JsonConvert.SerializeObject(u);
+            var response = await cliente.PutAsync("api/usuario", new StringContent(json, Encoding.UTF8,
+                "application/json"));
+            if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                var errores = await response.Content.ReadAsStringAsync();
+                LanzarErrorJson(errores);
+                return false;
+            }
+           
+            return true;
+        }
         void LanzarError(string mensaje)
         {
             Error?.Invoke(new List<string> { mensaje });
+        }
+        public async Task<bool> InsertDocente(Docentes d)
+        {
+            var json = JsonConvert.SerializeObject(d);
+            var response = await cliente.PostAsync("api/docente", new StringContent(json, Encoding.UTF8, "application/json"));
+            if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                var errores = await response.Content.ReadAsStringAsync();
+                LanzarErrorJson(errores);
+                return false;
+            }
+            return true;
+        }
+        public async Task<bool> UpdateDocente(Docentes d)
+        {
+            var json = JsonConvert.SerializeObject(d);
+            var response = await cliente.PutAsync("api/usuario", new StringContent(json, Encoding.UTF8,
+                "application/json"));
+            if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                var errores = await response.Content.ReadAsStringAsync();
+                LanzarErrorJson(errores);
+                return false;
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                LanzarError("No se encontro el usuario");
+            }
+            return true;
         }
 
 

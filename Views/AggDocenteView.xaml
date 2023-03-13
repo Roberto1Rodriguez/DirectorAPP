@@ -44,7 +44,7 @@
                     <Entry  TextColor="Black" HeightRequest="50" Placeholder="Apellido Materno*" ></Entry>
                 </Frame>
                 <Frame  Grid.Row="2" Grid.Column="1"  Margin="5,20,0,70" CornerRadius="10" HeightRequest="50">
-                    <Entry  TextColor="Black" HeightRequest="50" Placeholder="Edad*" ></Entry>
+                    <Entry Keyboard="Numeric"  TextColor="Black" HeightRequest="50" Placeholder="Edad*" ></Entry>
                 </Frame>
                 <Frame  Grid.Row="3" Grid.ColumnSpan="2"  Margin="5,20,0,70" CornerRadius="10" HeightRequest="50">
                     <Picker TextColor="Black" HeightRequest="50" Title="Seleccione Tipo de Docente" >
@@ -57,7 +57,7 @@
                 </Frame>
                 <Label Grid.Row="4" Margin="0,0,0,0" FontFamily="Arial" FontAttributes="Bold" FontSize="Medium" Grid.ColumnSpan="2" TextColor="#8949a5">INFORMACIÓN DE CONTACTO</Label>
                 <Frame  Grid.Row="5" Margin="0,0,5,70" Grid.ColumnSpan="2" CornerRadius="10" HeightRequest="50">
-                    <Entry  TextColor="Black" HeightRequest="50" Placeholder="E-mail*" ></Entry>
+                    <Entry TextColor="Black" HeightRequest="50" Placeholder="E-mail*" ></Entry>
                 </Frame>
                 <Frame  Grid.Row="6"  Margin="0,0,5,70" CornerRadius="10" HeightRequest="50">
                     <Entry  TextColor="Black" HeightRequest="50" Placeholder="Telefono*" ></Entry>

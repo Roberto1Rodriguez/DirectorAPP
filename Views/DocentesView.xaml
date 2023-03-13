@@ -6,6 +6,7 @@
     <ContentPage.BindingContext>
         <vm:DirectorViewModel/>
     </ContentPage.BindingContext>
+    <Grid>
     <VerticalStackLayout>
        
         <CollectionView ItemsSource="{Binding Docentes}">
@@ -37,4 +38,6 @@
             </CollectionView>
       
     </VerticalStackLayout>
+    <ImageButton Command="{Binding VerAgregarDocente}" Grid.Row="0" CornerRadius="35" HorizontalOptions="End" Aspect="Fill"  WidthRequest="70" HeightRequest="70" Margin="0,0,20,22" x:Name="btnagg"  VerticalOptions="End" Source="agregar.png"></ImageButton>
+    </Grid>
 </ContentPage>

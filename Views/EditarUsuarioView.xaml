@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DirectorAPP.Views.EditarUsuarioView"
+             xmlns:vm="clr-namespace:DirectorAPP.ViewModel"
+             Title="EditarUsuarioView" Background="#eaebed">
+    <ContentPage.BindingContext>
+        <vm:DirectorViewModel></vm:DirectorViewModel>
+    </ContentPage.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.ColumnSpan="2" Aspect="AspectFill" Scale=".8" Source="aggusuario.png"></Image>
+            <Label Grid.Column="0" Margin="10,0,0,0" CharacterSpacing="2" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="Black" VerticalTextAlignment="End" >Usuario</Label>
+            <Label Grid.Column="1" Margin="0,0,10,0"  CharacterSpacing="2"  HorizontalTextAlignment="Center" TextColor="Black" VerticalTextAlignment="End" >Docente</Label>
+        </Grid>
+        <Frame  Margin="0,0,0,50"  Grid.Row="1" HeightRequest="450" WidthRequest="360" HasShadow="True" >
+
+            <StackLayout>
+                <Label FontSize="Medium" FontFamily="Arial" HorizontalTextAlignment="Center" FontAttributes="Bold" CharacterSpacing="2" TextColor="#8949a5">Informacion del Usuario</Label>
+                <Frame   Margin="0,30,0,0" CornerRadius="20" HeightRequest="50">
+                    <Entry Text="{Binding Usuario.Usuario1}" TextColor="Black" HeightRequest="50" Placeholder="Nombre de Usuario" ></Entry>
+                </Frame>
+                <Frame  Margin="0,30,0,0" CornerRadius="20" HeightRequest="50">
+                    <Grid HeightRequest="50">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="30" />
+
+                        </Grid.ColumnDefinitions>
+                        <Entry Text="{Binding Usuario.Contraseña}" x:Name="btnpass" TextColor="Black"  IsPassword="True" HeightRequest="50"  Placeholder="Contraseña" ></Entry>
+                        <ImageButton x:Name="imgbtn"  Grid.Column="1" WidthRequest="25" Source="ojo.png" Clicked="ImageButton_Clicked"></ImageButton>
+                    </Grid>
+
+                </Frame>
+                <Button Command="{Binding GuardarUsuarioCommand}"  BackgroundColor="#9019c7" WidthRequest="300" CornerRadius="30" FontAttributes="Bold" CharacterSpacing="3" HeightRequest="60" TextColor="White" Margin="0,40,0,0" Text="AGREGAR USUARIO"></Button>
+            </StackLayout>
+        </Frame>
+
+    </Grid>
+</ContentPage>

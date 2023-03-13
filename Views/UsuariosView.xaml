@@ -4,8 +4,13 @@
              x:Class="DirectorAPP.Views.UsuariosView" xmlns:vm="clr-namespace:DirectorAPP.ViewModel"
              Title="Usuarios" Background="#eaebed">
     <ContentPage.BindingContext>
-        <vm:DirectorViewModel/>
+        <vm:DirectorViewModel x:Name="dir"/>
     </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+
+     
+    </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <Style TargetType="Grid">
             <Setter Property="VisualStateManager.VisualStateGroups">
@@ -32,9 +37,14 @@
                 <CollectionView   ItemsSource="{Binding Usuarios}" SelectionMode="Single" >
             <CollectionView.ItemTemplate>
                 <DataTemplate>
+                    
                             <Grid>
+                   
                     <Frame HasShadow="True" BackgroundColor="White" HeightRequest="110" HorizontalOptions="Start" CornerRadius="15" WidthRequest="360" Margin="20,15,0,0">
-                        <Grid VerticalOptions="Center">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference dir},Path=VerEditarUsuarioCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+                            <Grid VerticalOptions="Center">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                              
@@ -55,7 +65,7 @@
       
       
    
-        <ImageButton Command="{Binding VerAgregar}" Grid.Row="0" CornerRadius="35" HorizontalOptions="End" Aspect="Fill"  WidthRequest="70" HeightRequest="70" Margin="0,0,20,22" x:Name="btnagg"  VerticalOptions="End" Source="agregar.png">
+        <ImageButton Command="{Binding VerAgregarUsuario}" Grid.Row="0" CornerRadius="35" HorizontalOptions="End" Aspect="Fill"  WidthRequest="70" HeightRequest="70" Margin="0,0,20,22" x:Name="btnagg"  VerticalOptions="End" Source="agregar.png">
            
         </ImageButton>
         
