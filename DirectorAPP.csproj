@@ -28,6 +28,7 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<ApplicationIcon>3986707-building-education-school-school-icon_112987.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -63,6 +64,10 @@
 	  <None Remove="Resources\Images\visible.png" />
 	  <None Remove="Resources\Splash\screen.png" />
 	  <None Remove="Resources\Splash\screen.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="3986707-building-education-school-school-icon_112987.ico" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -30,6 +30,7 @@ namespace DirectorAPP.ViewModel
 
         public string Errores { get; set; }
         readonly Service service = new Service();
+        readonly AsignarService asignarserver = new();
         public ICommand LoginCommand { get; set; }
         public ICommand VerAgregarUsuario { get; set; }
         public ICommand VerAgregarDocente { get; set; }
@@ -39,8 +40,8 @@ namespace DirectorAPP.ViewModel
         public ICommand ConfirmarUsuarioCommand { get; set; }
         public ICommand GuardarDocenteCommand { get; set; }
         public ICommand ConfirmarDocentesCommand { get; set; }
-
-
+        public Command VerAsignarDocenteGruposCommand { get; set; }
+        public Command AsignarGrupoCommand { get; set; }
         public DirectorViewModel()
         {
             
@@ -53,12 +54,18 @@ namespace DirectorAPP.ViewModel
             ConfirmarUsuarioCommand = new Command<Usuario>(ConfirmarUsuarioAsync);
             ConfirmarDocentesCommand = new Command<Docentes>(ConfirmarDocenteAsync);
             VerEditarDocenteCommand = new Command<Docentes>(EditarDocente);
-
+            VerAsignarDocenteGruposCommand = new Command(VerAsignarDocenteGrupos);
+            AsignarGrupoCommand = new Command(AsignarDocenteGrupo);
             Usuario = new Usuario();
             Docente = new Docentes();
             service.Error += Service_Error;
             VerDocentes();
             VerUsuarios();
+            CargarGrupo();
+            CargarAsignatura();
+            CargarPeriodo();
+            CargarDocenteGrupos();
+            CargarDocenteAsignatura();
             Actualizar(nameof(Usuarios));
         }
         private void NuevoUsuario()
@@ -239,7 +246,66 @@ namespace DirectorAPP.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
+        //
+        async void CargarGrupo()
+        {
+            Grupolista.Clear();
+            var datos = await asignarserver.GetGrupo();
+            datos.ForEach(x => Grupolista.Add(x));
+            Actualizar(nameof(Grupolista));
+        }
+        async void CargarAsignatura()
+        {
+            AsignaturaLista.Clear();
+            var datos = await asignarserver.GetAsignatura();
+            datos.ForEach(x => AsignaturaLista.Add(x));
+            Actualizar(nameof(AsignaturaLista));
+        }
+        async void CargarPeriodo()
+        {
+            PeriodoLista.Clear();
+            var datos = await asignarserver.GetPeriodo();
+            datos.ForEach(x => PeriodoLista.Add(x));
+            Actualizar(nameof(PeriodoLista));
+        }
+        async void CargarDocenteGrupos()
+        {
+            DocenteGrupoLista.Clear();
+            var datos = await asignarserver.GetDocenteGrupo();
+            datos.ForEach(x => DocenteGrupoLista.Add(x));
+            Actualizar(nameof(DocenteAsignaturaLista));
+        }
+        async void CargarDocenteAsignatura()
+        {
+            DocenteAsignaturaLista.Clear();
+            var datos = await asignarserver.GetDocenteAsignatura();
+            datos.ForEach(x => DocenteAsignaturaLista.Add(x));
+            Actualizar(nameof(DocenteAsignaturaLista));
+        }
+        private async void VerAsignarDocenteGrupos()
+        {
+            docgrupo = new DocenteGrupo();
+            GruposView gview= new GruposView() { BindingContext = this };
+           
 
+            await Application.Current.MainPage.Navigation.PushAsync(gview);
+        }
+        
+        public Grupo grup { get; set; }
+        public Periodo peri { get; set; }
+        public async void AsignarDocenteGrupo()
+        {
+            docgrupo.IdDocente = Docente.Id;
+            docgrupo.IdGrupo = grup.Id;
+            docgrupo.IdPeriodo = peri.Id;
+            DocenteGrupoLista.Add(docgrupo);
+            Actualizar(nameof(DocenteGrupoLista));
+            await asignarserver.InsertAsignarGrupo(docgrupo);
+            await Application.Current.MainPage.Navigation.PopAsync();
+
+
+
+        }
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

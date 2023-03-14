@@ -7,7 +7,7 @@
         <vm:DirectorViewModel x:Name="dir"/>
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="asignar" Command="{Binding VerAgregarDocente}"></ToolbarItem>
+        <ToolbarItem IconImageSource="asignar" Command="{Binding VerAsignarDocenteGruposCommand}"></ToolbarItem>
 
         <ToolbarItem IconImageSource="agregar" Command="{Binding VerAgregarDocente}"></ToolbarItem>
 
