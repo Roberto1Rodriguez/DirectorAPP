@@ -12,7 +12,7 @@ namespace DirectorAPP.Services
     {
         HttpClient cliente = new HttpClient
         {
-            BaseAddress = new Uri("https://5274-2806-108e-21-37ea-28c2-729-a404-c474.ngrok.io/")
+            BaseAddress = new Uri("https://director2.sistemas19.com/")
         };
         public event Action<string> Error;
         void LanzarError(string mensaje)
