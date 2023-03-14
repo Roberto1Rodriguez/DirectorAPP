@@ -39,6 +39,7 @@
                     </Grid>
                   
                 </Frame>
+                <Label TextColor="Red" Text="{Binding Errores}"></Label>
                 <Button Command="{Binding GuardarUsuarioCommand}"  BackgroundColor="#9019c7" WidthRequest="300" CornerRadius="30" FontAttributes="Bold" CharacterSpacing="3" HeightRequest="60" TextColor="White" Margin="0,40,0,0" Text="AGREGAR USUARIO"></Button>
             </StackLayout>
         </Frame>

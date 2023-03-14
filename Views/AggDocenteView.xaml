@@ -70,6 +70,7 @@
                 <Frame  Grid.Row="6"  Margin="0,0,5,70" CornerRadius="10" HeightRequest="50">
                     <Entry  TextColor="Black" HeightRequest="50" Placeholder="Telefono*" Text="{Binding Docente.Telefono}" ></Entry>
                 </Frame>
+                <Label Grid.Row="6"  TextColor="Red" Text="{Binding Errores}"></Label>
                 <Button Command="{Binding GuardarDocenteCommand }" Grid.Row="7" Grid.ColumnSpan="2" BackgroundColor="#9019c7" WidthRequest="300" CornerRadius="30" FontAttributes="Bold" CharacterSpacing="3" HeightRequest="60" TextColor="White" Margin="0,0,0,0" Text="AGREGAR USUARIO"></Button>
 
             </Grid>

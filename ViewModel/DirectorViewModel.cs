@@ -109,6 +109,7 @@ namespace DirectorAPP.ViewModel
 
             }
             Actualizar(nameof(Usuarios));
+            Actualizar(nameof(Errores));
             VerUsuarios();
 
         }
@@ -124,6 +125,7 @@ namespace DirectorAPP.ViewModel
                 Rol = u.Rol
             };
             Actualizar(nameof(Usuarios));
+            Actualizar(nameof(Errores));
             EditarUsuarioView editarusuario = new EditarUsuarioView() { BindingContext = this };
             Application.Current.MainPage.Navigation.PushAsync(editarusuario);
         }
@@ -143,6 +145,7 @@ namespace DirectorAPP.ViewModel
                     TipoDocente=d.TipoDocente
      
             };
+            Actualizar(nameof(Errores));
             EditarDocenteView editardocente = new EditarDocenteView() { BindingContext = this };
             Application.Current.MainPage.Navigation.PushAsync(editardocente);
         }
@@ -169,6 +172,7 @@ namespace DirectorAPP.ViewModel
                     }
                 }
             }
+            Actualizar(nameof(Errores));
             VerDocentes();
 
         }
@@ -246,7 +250,7 @@ namespace DirectorAPP.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        //
+        //NoFunciona
         async void CargarGrupo()
         {
             Grupolista.Clear();
