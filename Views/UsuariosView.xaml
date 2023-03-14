@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DirectorAPP.Views.UsuariosView" xmlns:vm="clr-namespace:DirectorAPP.ViewModel" NavigationPage.HasNavigationBar="False"
-             Title="Usuarios" Background="#eaebed">
+             x:Class="DirectorAPP.Views.UsuariosView" xmlns:vm="clr-namespace:DirectorAPP.ViewModel"
+             Title="GESTIÓN" Background="#eaebed" >
     <ContentPage.BindingContext>
         <vm:DirectorViewModel x:Name="dir"/>
     </ContentPage.BindingContext>
 
-    <ContentPage.ToolbarItems>
-
-     
+    <ContentPage.ToolbarItems >
+        <ToolbarItem IconImageSource="agregar" Command="{Binding VerAgregarUsuario}"></ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <Style TargetType="Grid">
@@ -39,21 +38,28 @@
                 <DataTemplate>
                     
                             <Grid>
-                   
-                    <Frame HasShadow="True" BackgroundColor="White" HeightRequest="110" HorizontalOptions="Start" CornerRadius="15" WidthRequest="360" Margin="20,15,0,0">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={x:Reference dir},Path=VerEditarUsuarioCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
-                            </Frame.GestureRecognizers>
+
+                        <Frame HasShadow="True" BackgroundColor="White" HeightRequest="110" HorizontalOptions="Start" CornerRadius="15" WidthRequest="360" Margin="20,15,0,10">
                             <Grid VerticalOptions="Center">
                             <Grid.RowDefinitions>
-                                <RowDefinition/>
-                             
-                            </Grid.RowDefinitions>
+                            <RowDefinition/>
+                                </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width=".3*"/>
-                                    <ColumnDefinition Width=".6*"/>
+                                <ColumnDefinition Width=".2*"/>
+                                    <ColumnDefinition Width=".55*"/>
+                                    <ColumnDefinition Width=".3*"/>
                                 </Grid.ColumnDefinitions>
-                            <Image Source="usuarios.png"></Image>
+                                <Image Grid.Column="1" Scale=".8" HorizontalOptions="End" Source="eliminar.png">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference dir}, Path=ConfirmarUsuarioCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image Grid.Column="2" VerticalOptions="Center"  Scale=".8" HorizontalOptions="End"  Source="editar.png">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference dir}, Path=VerEditarUsuarioCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image Source="usuarios.png"></Image>
                             <Label  TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center" FontSize="Medium" Grid.Column="1" Margin="0,0,0,5" Text="{Binding Usuario1}"></Label>
                         </Grid>
                     </Frame>
@@ -65,9 +71,6 @@
       
       
    
-        <ImageButton Command="{Binding VerAgregarUsuario}" Grid.Row="0" CornerRadius="35" HorizontalOptions="End" Aspect="Fill"  WidthRequest="70" HeightRequest="70" Margin="0,0,20,22" x:Name="btnagg"  VerticalOptions="End" Source="agregar.png">
-           
-        </ImageButton>
         
     </Grid>
 </ContentPage>

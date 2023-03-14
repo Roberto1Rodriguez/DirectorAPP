@@ -12,7 +12,7 @@
         <StackLayout>
 
         <Image Margin="0,0,0,-100" Source="logo.png"></Image>
-        <Label TextColor="#6263f0" FontAttributes="Bold" FontFamily="Arial" HorizontalTextAlignment="Center" FontSize="Medium">SISTEMA DE GESTION DE DOCENTES</Label>
+            <Label TextColor="#6263f0" FontAttributes="Bold" FontFamily="Arial" HorizontalTextAlignment="Center" FontSize="Medium">SISTEMA DE GESTIÓN DE DOCENTES</Label>
         <Label  TextColor="Black" FontAttributes="Bold" FontFamily="Arial" HorizontalTextAlignment="Center" FontSize="Medium" Margin="0,30,0,0" CharacterSpacing="3">INICIAR SESIÓN</Label>
         <Frame HasShadow="True" HorizontalOptions="StartAndExpand" Margin="10,50,0,0"  Padding="8" CornerRadius="30" HeightRequest="60" WidthRequest="360">
             <Grid>

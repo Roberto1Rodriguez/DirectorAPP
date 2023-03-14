@@ -5,12 +5,13 @@
                   xmlns:local="clr-namespace:DirectorAPP.Views"
              Title="Main" BarBackgroundColor="{StaticResource ColorAzul}" 
              BarTextColor="{StaticResource ColorBlanco}"
-            xmlns:vm="clr-namespace:DirectorAPP.ViewModel" NavigationPage.HasNavigationBar="False">
+            
+             xmlns:vm="clr-namespace:DirectorAPP.ViewModel" NavigationPage.HasNavigationBar="False">
     
     <TabbedPage.BindingContext>
         <vm:DirectorViewModel/>
     </TabbedPage.BindingContext>
-    <local:UsuariosView/>
-    <local:DocentesView/>
+    <local:UsuariosView Title="Usuarios" IconImageSource="usuarios.png"/>
+    <local:DocentesView Title="Docentes" IconImageSource="profesor.png"/>
    
 </TabbedPage>

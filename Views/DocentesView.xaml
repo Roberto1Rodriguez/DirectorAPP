@@ -2,10 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DirectorAPP.Views.DocentesView" xmlns:vm="clr-namespace:DirectorAPP.ViewModel"
-             Title="Docentes" Background="#eaebed" NavigationPage.HasBackButton="False" NavigationPage.HasNavigationBar="False">
+             Title="GESTIÓN" Background="#eaebed">
     <ContentPage.BindingContext>
         <vm:DirectorViewModel x:Name="dir"/>
     </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="asignar" Command="{Binding VerAgregarDocente}"></ToolbarItem>
+
+        <ToolbarItem IconImageSource="agregar" Command="{Binding VerAgregarDocente}"></ToolbarItem>
+
+    </ContentPage.ToolbarItems>
     <ScrollView>
         <Grid>
         
@@ -14,36 +20,46 @@
         <CollectionView ItemsSource="{Binding Docentes}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                    <Frame BackgroundColor="White" HeightRequest="120" CornerRadius="15" WidthRequest="360" Margin="0,15,0,0">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={x:Reference dir},Path=VerEditarDocenteCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
-                            </Frame.GestureRecognizers>
+                    <Frame BackgroundColor="White" HeightRequest="150" CornerRadius="15" WidthRequest="360" Margin="0,15,0,0">
+                           
                             <Grid VerticalOptions="Center">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width=".3*"/>
-                                <ColumnDefinition Width=".6*"/>
-                                <ColumnDefinition Width=".6*"/>
-                                <ColumnDefinition Width=".5*"/>
-                            </Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width=".6*"/>
+                                        <ColumnDefinition Width=".7*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width=".6*"/>
+                                    </Grid.ColumnDefinitions>
                             <Image Source="profesor.png" Grid.RowSpan="2"></Image>
                             <Label  TextColor="Black" FontAttributes="Bold" Grid.Column="1" Margin="0,0,0,5" Text="{Binding Nombre}"></Label>
                             <Label  TextColor="Black" FontAttributes="Bold" Grid.Column="2" Text="{Binding ApellidoPaterno}"></Label>
                             <Label TextColor="Black" FontAttributes="Bold" Grid.Column="3" Text="{Binding ApellidoMaterno}"></Label>
                             <Label HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" Grid.Row="2" Grid.Column="1" Text="Tipo de Docente:" ></Label>
                             <Label HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="Center" Grid.ColumnSpan="2" Text="{Binding TipoDocente}"></Label>
-                            <Label HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" Grid.Row="2" Grid.Column="3">Grupo:</Label>
-                        </Grid>
+                            <!--<Label HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" Grid.Row="2" Grid.Column="3">Grupo:</Label>-->
+                                    <Image Grid.Column="4" Scale=".8" VerticalOptions="Center"  Source="eliminar.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={x:Reference dir}, Path=ConfirmarDocentesCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Image Grid.Column="4" Grid.Row="2" VerticalOptions="Center"  Scale=".8" HorizontalOptions="End"  Source="editar.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={x:Reference dir},Path=VerEditarDocenteCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+
+                                            
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
                     </Frame>
                 </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
       
     </VerticalStackLayout>
-    <ImageButton Command="{Binding VerAgregarDocente}" Grid.Row="0" CornerRadius="35" HorizontalOptions="End" Aspect="Fill"  WidthRequest="70" HeightRequest="70" Margin="0,0,20,22" x:Name="btnagg"  VerticalOptions="End" Source="agregar.png"></ImageButton>
-    </Grid>
+  </Grid>
         </ScrollView>
 </ContentPage>

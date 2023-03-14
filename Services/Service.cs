@@ -12,7 +12,7 @@ namespace DirectorAPP.Services
     {
         HttpClient cliente = new HttpClient
         {
-            BaseAddress = new Uri("https://directorapi.sistemas19.com/")
+            BaseAddress = new Uri("https://5274-2806-108e-21-37ea-28c2-729-a404-c474.ngrok.io/")
         };
         public event Action<List<string>> Error;
 
@@ -96,6 +96,21 @@ namespace DirectorAPP.Services
            
             return true;
         }
+      public async Task<bool> DeleteUsuario(Usuario u)
+        {
+            var response = await cliente.DeleteAsync("api/usuario/" + u.Id);
+            if (response.StatusCode==System.Net.HttpStatusCode.BadRequest)
+            {
+                var errores = await response.Content.ReadAsStringAsync();
+                LanzarErrorJson(errores);
+                return false;
+            }
+            else if (response.StatusCode==System.Net.HttpStatusCode.NotFound)
+            {
+                LanzarError("No se encontro el Id del usuario");
+            }
+            return true;
+        }
         void LanzarError(string mensaje)
         {
             Error?.Invoke(new List<string> { mensaje });
@@ -129,6 +144,21 @@ namespace DirectorAPP.Services
             }
             return true;
         }
+        public async Task<bool> DeleteDocente(Docentes d)
+        {
+            var response = await cliente.DeleteAsync("api/docente/" + d.Id);
+            if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                var errores = await response.Content.ReadAsStringAsync();
+                LanzarErrorJson(errores);
+                return false;
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                LanzarError("No se encontro el Id del docente");
+            }
+            return true;
+        }
 
 
         void LanzarErrorJson(string json)
@@ -140,6 +170,19 @@ namespace DirectorAPP.Services
                 Error?.Invoke(obj);
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }

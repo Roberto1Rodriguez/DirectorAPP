@@ -17,9 +17,6 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Image Grid.ColumnSpan="2" Aspect="AspectFill" Scale=".8" Source="aggusuario.png"></Image>
-            <Label Grid.Column="0" Margin="10,0,0,0" CharacterSpacing="2" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="Black" VerticalTextAlignment="End" >Usuario</Label>
-            <Label Grid.Column="1" Margin="0,0,10,0"  CharacterSpacing="2"  HorizontalTextAlignment="Center" TextColor="Black" VerticalTextAlignment="End" >Docente</Label>
         </Grid>
         <Frame  Margin="0,0,0,50"  Grid.Row="1" HeightRequest="450" WidthRequest="360" HasShadow="True" >
          
